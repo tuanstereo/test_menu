@@ -113,29 +113,20 @@ const listMenu = [{
     children: [],
     url: ""
 }]
-let root = document.getElementById('root')
+
+const root = document.getElementById('root')
+const renderUrl = (parentUrl, url) => parentUrl ? parentUrl + "/" + url + '.html' : '/' + url + '.html'
 const renderUI = (element, parentUrl) => {
     parentUrl = parentUrl || ""
-    let UI = element.reduce((initValue, item) => `${initValue + `<li id=${item.url}><a
-    href="${parentUrl ? parentUrl + "/" +
-            item.url + '.html' : '/' + item.url + '.html'}
-
-     ">${item.name}</a>
-    ${(item.children && item.children.length !== 0) ? renderUI(item.children, parentUrl + '/' + item.url) : ""}</li>`} `, "")
+    let UI = element.reduce((initValue, item) => `${initValue +
+        `<li id=${item.url}> <a href="${renderUrl(parentUrl, item.url)}">${item.name}</a>
+    ${(item.children.length !== 0) ? renderUI(item.children, parentUrl + '/' + item.url) : ""}</li>`} `, "")
     return `<ul>${UI}</ul>`
 }
 window.onload = () => {
-    let ui = renderUI(listMenu)
-    setTimeout(() => {
-        let pathName = window.location.pathname
-        let tab = pathName.split("/")
-        tab.splice(-1, 1, tab.at(-1).replace('.html', ""))
-        tab.forEach(item => {
-            if (item !== "") {
-                let elementActive = document.getElementById(item)
-                elementActive.setAttribute("class", "active")
-            }
-        })
-    }, 0)
-    root.innerHTML = ui
+    console.log('a');
+    root.innerHTML = renderUI(listMenu)
+    let tab = window.location.pathname.split("/")
+    tab.splice(-1, 1, tab.at(-1).replace('.html', ""))
+    tab.forEach(item => item !== "" && document.getElementById(item).setAttribute("class", "active"))
 }
