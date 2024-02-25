@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    margin: 5px 10%;
+}
+
+nav {
+    background: #484848;
+    border-radius: 5px;
+}
+
+nav ul {
+    display: flex;
+}
+
+nav>ul li {
+    list-style: none;
+    border-right: 1px solid #ccc;
+    border-left: 1px solid #333;
+}
+
+nav>ul li a {
+    display: block;
+    padding: 0 25px;
+    line-height: 50px;
+    color: #f1f2f3;
+    text-decoration: none;
+}
+
+nav ul li:first-child {
+    border-left: none;
+}
+
+nav>ul li:first-child a {
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+nav ul li:hover>a {
+    background: red;
+    opacity: .7;
+    color: yellow;
+}
+
+nav li ul {
+    display: none;
+    min-width: 350px;
+    position: absolute;
+}
+
+nav li>ul li {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    background: #999;
+    text-align: left;
+}
+
+nav li>ul li:first-child a {
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+}
+
+nav li>ul li:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+nav li>ul li:last-child a {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+nav li:hover>ul {
+    display: block;
+}
+
+nav>ul li>ul li>ul {
+    margin-left: 352px;
+    margin-top: -50px;
+}
+
+.active {
+    background-color: rgb(34, 80, 80);
+    color: black;
+}
